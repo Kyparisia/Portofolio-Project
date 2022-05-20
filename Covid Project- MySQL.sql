@@ -103,9 +103,3 @@ ORDER BY 2,3
 SELECT * , (RollingPeopleVaccinated/Population)*100 FROM PopVsVac;
 
 SELECT * FROM Percentpopulationvaccinated;
-
-
-
-
-
-
