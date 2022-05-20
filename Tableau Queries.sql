@@ -6,7 +6,7 @@ Queries used for Tableau Project
 -- WHERE continent =''
 -- GROUP BY location;
 
--- 1. 
+-- Table 1. 
 -- (Taking out Africa, Asia, Europe, European Union, International,North America,South America,Oceania,World) We have World results in this way
 SELECT SUM(new_cases) AS total_cases, SUM(new_deaths) AS total_deaths, SUM(new_deaths)/SUM(New_Cases)*100 AS DeathPercentage FROM coviddeaths
 WHERE continent <>''
@@ -22,7 +22,7 @@ WHERE location = 'World'
 ORDER BY 1,2;
 
 
--- 2. 
+-- Table 2. 
 -- The 5 continents ( Antarctic is not included in the dataset) (European Union is part of Europe)
 SELECT location, SUM(new_deaths) AS TotalDeathCount FROM coviddeaths
 WHERE continent =''
@@ -31,7 +31,7 @@ GROUP BY location
 ORDER BY TotalDeathCount DESC;
 
 
--- 3.
+-- Table 3.
 
 SELECT location, population, MAX(total_cases) AS HighestInfectionCount,  (MAX(total_cases/population))*100 AS PercentPopulationInfected FROM coviddeaths
 -- WHERE location="Greece"
@@ -39,16 +39,10 @@ GROUP BY location
 ORDER BY PercentPopulationInfected DESC;
 
 
--- 4.
+-- Table 4.
 
-
-SELECT location, population, date, MAX(total_cases) AS HighestInfectionCount, (MAX(total_cases/population))*100 AS PercentPopulationInfected FROM coviddeaths
--- WHERE location="Andorra"
-GROUP BY location, population, date
-ORDER BY PercentPopulationInfected DESC, date;
-
-SELECT location, population, date, total_cases AS HighestInfectionCount, (total_cases/population)*100 AS PercentPopulationInfected FROM coviddeaths
--- WHERE location="Andorra"
+SELECT location, population, date, total_cases AS HighestInfectionCount, new_cases, (total_cases/population)*100 AS PercentPopulationInfected FROM coviddeaths
+-- WHERE location="Greece"
 -- GROUP BY location, population, date
 ORDER BY PercentPopulationInfected DESC, date;
 
