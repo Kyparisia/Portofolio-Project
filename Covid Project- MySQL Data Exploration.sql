@@ -35,7 +35,6 @@ WHERE continent <>''
 GROUP BY location
 ORDER BY PercentPopulationInfected DESC;
 
-
 -- 6. Countries(Location) with Highest Death Count per Population
 SELECT location, MAX(total_deaths) as TotalDeathCount FROM coviddeaths
 WHERE continent <>''
@@ -47,6 +46,7 @@ SELECT continent, MAX(total_deaths) as TotalDeathCount FROM coviddeaths
 WHERE continent <>''
 GROUP BY continent
 ORDER BY TotalDeathCount DESC;
+
 
 -- 8. GLOBAL NUMBERS
 SELECT date, SUM(new_cases) as total_cases, SUM(new_deaths) as total_deaths, (SUM(new_deaths)/SUM(new_cases))*100 as death_percentage FROM coviddeaths
@@ -62,7 +62,7 @@ WHERE  dea.continent <>''
 ORDER BY 2,3;
 
 
--- Showing the percent of people who have been vaccinated since that day
+-- Showing the percent of people who have been vaccinated to this day
 With PopVsVac (Continent, Location, Date, Population, New_Vaccinations, RollingPeopleVaccinated) AS
 (
 SELECT dea.continent,dea.location,dea.date, dea.population, vac.new_vaccinations,
